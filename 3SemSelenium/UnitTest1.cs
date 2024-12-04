@@ -50,5 +50,33 @@ namespace _3SemSelenium
 
 
         }
+        [TestMethod]
+        public void AddToCalendarTest()
+        {
+            _driver.Navigate().GoToUrl("http://localhost:52330/WOTD/exercises.html");
+            string title = _driver.Title;
+            Assert.AreEqual("Exercises", title);
+
+            Thread.Sleep(1400);
+            IWebElement inputElement = _driver.FindElement(By.Id("search-input"));
+            inputElement.SendKeys("Chest");
+
+            Thread.Sleep(1400);
+            IWebElement searchButtonElement = _driver.FindElement(By.Id("search-button"));
+            searchButtonElement.Click();
+
+            Thread.Sleep(1400);
+            IWebElement AddButtonElement = _driver.FindElement(By.Id(""));
+            AddButtonElement.Click();
+
+            Thread.Sleep(1400);
+            _driver.Navigate().GoToUrl("http://localhost:52330/WOTD/calendar.html");
+            string title2 = _driver.Title;
+            Assert.AreEqual("Calendar", title2);
+
+            Thread.Sleep(1400);
+            IWebElement RemoveButtonElement = _driver.FindElement(By.Id(""));
+            RemoveButtonElement.Click();
+        }
     }
 }
